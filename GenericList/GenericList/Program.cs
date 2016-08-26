@@ -9,7 +9,7 @@ namespace GenericList
     class Program
     {
         static void Main(string[] args)
-        { 
+        {
             GenericList<int> Number = new GenericList<int>();
             Number.Add(1);
             Number.Add(2);
@@ -36,6 +36,13 @@ namespace GenericList
 
             Number.Count();
 
+            GenericList<string> Animals = new GenericList<string>();
+            Animals.Add("Dog");
+            Animals.Add("Cat");
+            Animals.Add("Cow");
+            Animals.Add("Horse");
+            Animals.SortList(Animals);
+           
             Console.ReadLine();
         }
        

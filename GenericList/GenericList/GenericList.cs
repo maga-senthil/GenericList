@@ -13,6 +13,7 @@ namespace GenericList
         public T[] newArray;
         int count = 0;
         string toString;
+
         public GenericList()
         {
             newArray = new T[] { };
@@ -41,29 +42,30 @@ namespace GenericList
 
         public void Remove(T item)
         {
-
-            T[] tempArray = new T[newArray.Length - 1];
-
-            for (int i = 0; i < newArray.Length - 1; i++)
+            int m = 0;
+            for (int k = 0; k < newArray.Length; k++)
             {
-
+                if (Equals(newArray[k], item))
                 {
-                    if (Equals(newArray[i], item))
-                    {
-                        while (i < newArray.Length - 1)
-                        {
-                            tempArray[i] = newArray[i + 1];
-                            i++;
-                        }
-                    }
-                    else
-                    {
-                        tempArray[i] = newArray[i];
-                    }
+                    m++;
+                }
+            }
+
+            T[] tempArray = new T[newArray.Length - m];
+            int j = 0;
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                if (Equals(newArray[i], item))
+                {
+
+                }
+                else
+                {
+                    tempArray[j] = newArray[i];
+                    j++;
                 }
             }
             newArray = tempArray;
-
         }
         public IEnumerator GetEnumerator()
         {
@@ -71,9 +73,9 @@ namespace GenericList
             for (int i = 0; i < newArray.Length; i++)
             {
                 if (newArray[i] != null)
-            {
-                yield return newArray[i];
-            }
+                {
+                    yield return newArray[i];
+                }
             }
         }
 
@@ -86,7 +88,7 @@ namespace GenericList
         {
             for (int i = 0; i < newArray.Length; i++)
             {
-                toString += newArray [i].ToString();
+                toString += newArray[i].ToString();
             }
             Console.WriteLine(toString);
             return toString;
@@ -95,7 +97,7 @@ namespace GenericList
         public static GenericList<T> operator +(GenericList<T> list1, GenericList<T> list2)
         {
 
-            GenericList<T> resultList = new GenericList<T>(); 
+            GenericList<T> resultList = new GenericList<T>();
             foreach (T item in list1)
             {
                 resultList.Add(item); ;
@@ -104,7 +106,7 @@ namespace GenericList
             {
                 resultList.Add(item);
             }
-           
+
             return resultList;
         }
 
@@ -114,35 +116,32 @@ namespace GenericList
         }
         public static GenericList<T> operator -(GenericList<T> list1, GenericList<T> list2)
         {
-            GenericList<T> resultList = new GenericList<T>();
-            {
-                foreach (T item2 in list2)
-                {
-                    foreach (T item1 in list1)
-                    {
-                        if (Equals(item1, item2))
-                        {
-                            list1.Remove(item1);
-                            //list2.Remove(item2);
-                        }
-                    }
-                }
-                return list1;
-            }
-        }
-        
+            GenericList<T> result = new GenericList<T>();
 
-        
+            foreach (T item2 in list2)
+            {
+                list1.Remove(item2);
+            }
+
+            return list1;
+        }
+
+        private object Where(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
+        }
+
+
         public int Count()
         {
             foreach (T item in newArray)
             {
-              count += 1;
+                count += 1;
             }
             return count;
         }
 
-        public GenericList<T> Zipper(GenericList <T> list1)
+        public GenericList<T> Zipper(GenericList<T> list1)
         {
             GenericList<T> ZipList = new GenericList<T>();
 
@@ -150,14 +149,42 @@ namespace GenericList
             {
                 if (newArray[i] != null)
                 {
-                    ZipList.Add( newArray[i]);
-                    ZipList.Add(list1 .newArray [i]);
-                   
+                    ZipList.Add(newArray[i]);
+                    ZipList.Add(list1.newArray[i]);
+
                 }
             }
-            
+
             return ZipList;
         }
+
+    
+        public void SortList(GenericList <T>  list) 
+        {
+           T temp ;
+
+            for (int write = 0; write < newArray.Length; write++)
+            {
+                for (int sort = 0; sort < newArray .Length - 1; sort++)
+                {
+                    var result = Comparer<T>.Default.Compare(newArray[sort], newArray[sort + 1]);
+
+                    if ( result > 0)
+                    {
+                        temp = newArray [sort + 1];
+                        newArray [sort + 1] = newArray [sort];
+                        newArray [sort] = temp;
+                    }
+                }
+                Console.Write("{0} ", newArray[write]);
+            }
+        }
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
  

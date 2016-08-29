@@ -26,21 +26,17 @@ namespace GenericList
             AddNumber.Add(4);
             AddNumber.Add(5);
 
-            //Number.Remove(3);
+            Number.Remove(3);
 
-            //Number.ChangeString();
+            Number.ChangeString();
 
-            //GenericList<int> CombinedList = Number + AddNumber;
+            GenericList<int> CombinedList = Number + AddNumber;
 
-            //GenericList<int> RemoveList = Number - AddNumber;
+            GenericList<int> RemoveList = Number - AddNumber;
 
             GenericList<int> Zip = new GenericList<int>();
             Number.Zipper(Number,AddNumber);
-            foreach (var number in Zip)
-            {
-                Console.WriteLine(number);
-            }
-
+           
             Number.Count();
 
             GenericList<string> Animals = new GenericList<string>();

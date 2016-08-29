@@ -147,36 +147,17 @@ namespace GenericList
 
             foreach (T item2 in list2)
             {
-                
+                foreach(T item1 in list1)
+                {
                     list1.Add(item2);
-                
+                }
             }
             return list1;
         }
 
-
-       
-     
+    
 
     
-    //public GenericList<T> Zipper(GenericList<T> list1)
-    //{
-    //    GenericList<T> ZipList = new GenericList<T>();
-
-    //    for (int i = 0; i < newArray.Length; i++)
-    //    {
-    //        if (newArray[i] != null)
-    //        {
-    //            ZipList.Add(newArray[i]);
-    //            ZipList.Add(list1.newArray[i]);
-
-    //        }
-    //    }
-
-    //    return ZipList;
-    //}
-
-
     public void SortList(GenericList <T>  list) 
         {
            T temp ;

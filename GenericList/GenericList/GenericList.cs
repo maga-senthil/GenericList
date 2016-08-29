@@ -141,25 +141,43 @@ namespace GenericList
             return count;
         }
 
-        public GenericList<T> Zipper(GenericList<T> list1)
+        public GenericList<T> Zipper(GenericList<T> list1, GenericList<T> list2)
         {
-            GenericList<T> ZipList = new GenericList<T>();
+          
 
-            for (int i = 0; i < newArray.Length; i++)
+            foreach (T item2 in list2)
             {
-                if (newArray[i] != null)
-                {
-                    ZipList.Add(newArray[i]);
-                    ZipList.Add(list1.newArray[i]);
-
-                }
+                
+                    list1.Add(item2);
+                
             }
-
-            return ZipList;
+            return list1;
         }
 
+
+       
+     
+
     
-        public void SortList(GenericList <T>  list) 
+    //public GenericList<T> Zipper(GenericList<T> list1)
+    //{
+    //    GenericList<T> ZipList = new GenericList<T>();
+
+    //    for (int i = 0; i < newArray.Length; i++)
+    //    {
+    //        if (newArray[i] != null)
+    //        {
+    //            ZipList.Add(newArray[i]);
+    //            ZipList.Add(list1.newArray[i]);
+
+    //        }
+    //    }
+
+    //    return ZipList;
+    //}
+
+
+    public void SortList(GenericList <T>  list) 
         {
            T temp ;
 

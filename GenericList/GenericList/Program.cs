@@ -16,6 +16,8 @@ namespace GenericList
             Number.Add(3);
             Number.Add(5);
             Number.Add(6);
+            Number.Add(1);
+
 
             GenericList<int> AddNumber = new GenericList<int>();
             AddNumber.Add(1);
@@ -24,15 +26,20 @@ namespace GenericList
             AddNumber.Add(4);
             AddNumber.Add(5);
 
-            Number.Remove(3);
+            //Number.Remove(3);
 
-            Number.ChangeString();
+            //Number.ChangeString();
 
-            GenericList<int> CombinedList = Number + AddNumber;
+            //GenericList<int> CombinedList = Number + AddNumber;
 
-            GenericList<int> RemoveList = Number - AddNumber;
+            //GenericList<int> RemoveList = Number - AddNumber;
 
-            Number.Zipper(AddNumber);
+            GenericList<int> Zip = new GenericList<int>();
+            Number.Zipper(Number,AddNumber);
+            foreach (var number in Zip)
+            {
+                Console.WriteLine(number);
+            }
 
             Number.Count();
 

@@ -55,12 +55,8 @@ namespace GenericList
             int j = 0;
             for (int i = 0; i < newArray.Length; i++)
             {
-                if (Equals(newArray[i], item))
-                {
-
-                }
-                else
-                {
+                if (!Equals(newArray[i], item))
+                { 
                     tempArray[j] = newArray[i];
                     j++;
                 }
@@ -79,11 +75,7 @@ namespace GenericList
             }
         }
 
-        public bool Compare<U>(U newArray)
-        {
-            return EqualityComparer<U>.Default.Equals(newArray);
-        }
-
+       
         public string ChangeString()
         {
             for (int i = 0; i < newArray.Length; i++)
@@ -100,7 +92,7 @@ namespace GenericList
             GenericList<T> resultList = new GenericList<T>();
             foreach (T item in list1)
             {
-                resultList.Add(item); ;
+                resultList.Add(item); 
             }
             foreach (T item in list2)
             {
@@ -110,10 +102,7 @@ namespace GenericList
             return resultList;
         }
 
-        public bool Compare<L>(T item1, T item2)
-        {
-            return EqualityComparer<T>.Default.Equals(item1, item2);
-        }
+      
         public static GenericList<T> operator -(GenericList<T> list1, GenericList<T> list2)
         {
             GenericList<T> result = new GenericList<T>();
@@ -126,12 +115,7 @@ namespace GenericList
             return list1;
         }
 
-        private object Where(Func<object, bool> p)
-        {
-            throw new NotImplementedException();
-        }
-
-
+      
         public int Count()
         {
             foreach (T item in newArray)
@@ -141,24 +125,24 @@ namespace GenericList
             return count;
         }
 
+
         public GenericList<T> Zipper(GenericList<T> list1, GenericList<T> list2)
         {
-          
 
-            foreach (T item2 in list2)
+            GenericList<T> zippedResult = new GenericList<T>();
+
+            for (int i = 0; i < newArray.Length + 3; i++)
+
             {
-                foreach(T item1 in list1)
-                {
-                    list1.Add(item2);
-                }
+                zippedResult.Add(list1.newArray[i]);
+                zippedResult.Add(list2.newArray[i]);
             }
-            return list1;
+
+            return zippedResult;
         }
+       
 
-    
-
-    
-    public void SortList(GenericList <T>  list) 
+        public void SortList(GenericList <T>  list) 
         {
            T temp ;
 
@@ -178,11 +162,7 @@ namespace GenericList
                 Console.Write("{0} ", newArray[write]);
             }
         }
-        public int CompareTo(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
+      
 
     }
 }

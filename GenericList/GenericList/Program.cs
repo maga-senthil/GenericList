@@ -16,8 +16,6 @@ namespace GenericList
             Number.Add(3);
             Number.Add(5);
             Number.Add(6);
-            Number.Add(1);
-
 
             GenericList<int> AddNumber = new GenericList<int>();
             AddNumber.Add(1);
@@ -35,8 +33,8 @@ namespace GenericList
             GenericList<int> RemoveList = Number - AddNumber;
 
             GenericList<int> Zip = new GenericList<int>();
-            Number.Zipper(Number,AddNumber);
-           
+            Zip.Zipper(Number,AddNumber);
+
             Number.Count();
 
             GenericList<string> Animals = new GenericList<string>();
@@ -45,7 +43,7 @@ namespace GenericList
             Animals.Add("Cow");
             Animals.Add("Horse");
             Animals.SortList(Animals);
-           
+
             Console.ReadLine();
         }
        
